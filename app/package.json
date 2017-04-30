@@ -1,0 +1,17 @@
+{
+  "name": "my-mbp",
+  "version": "0.0.0",
+  "description": "An electron-vue project",
+  "main": "./dist/main.js",
+  "dependencies": {
+    "element-ui": "^1.2.4",
+    "vue": "^2.1.10",
+    "vue-electron": "^1.0.6",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.1.2"
+  },
+  "devDependencies": {
+    "sass-loader": "^6.0.3"
+  },
+  "author": "Lili Madiha <lilimadiha@gmail.com>"
+}
