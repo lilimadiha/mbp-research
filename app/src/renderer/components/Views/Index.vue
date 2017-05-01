@@ -42,10 +42,6 @@
     };
 </script>
 
-<!--<script src="D:\ELECTRON\my-mbp\build\sigma.js"></script>
-<script src="D:\ELECTRON\my-mbp\build\sigma.min.js"></script>
-<script src="D:\ELECTRON\my-mbp\build\plugins\sigma.parsers.gexf.min.js"></script> -->
-
 <style>
     .el-tabs {}
     
