@@ -209,11 +209,11 @@
 
                 config += "-p " + this.form.numTrainSample + " ";
 
-                if (this.testingSrcFile && !this.form.numTestSample) {
+                if (this.testingSrcFile) {
                     if (this.form.numTestSample) {
                         config += this.form.numTestSample + " ";
                     } else {
-                        return console.log("You initiliazed testing src file bu Number of Testing Sample not initiliazed!");
+                        return console.log("You initiliazed testing src file but Number of Testing Sample not initiliazed!");
                     }
                 }
 
@@ -251,7 +251,7 @@
 
                 // config += "-q ";
 
-                if (this.form.rescale) {
+                if (!this.form.rescale) {
                     config += "-d ";
                 }
                 console.log(config);
