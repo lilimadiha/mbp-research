@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-collapse v-model="activeNames">
+        <el-collapse v-model="activeNames" accordion>
             <!--<el-row>
                 <el-col :xs="12" :sm="12" :md="8" :lg="12" class="row-gutter text">-->
             <el-collapse-item title="Device" name="1">
