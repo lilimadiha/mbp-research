@@ -11,27 +11,47 @@
                 </div>
             </el-col>
         </el-row>
-        <el-tabs type="border-card">
-            <el-tab-pane label="MBP History">
-                A new class of Neural Networks (NN), designated the Multiple Feed-Forward (MFF) networks, and a new gradient-based learning algorithm, Multiple Back-Propagation (MBP), are proposed and analyzed. MFF are obtained by integrating two feed-forward networks (a main network and a space network) in a novel manner. A major characteristic is their ability to partition the input space by using 
-                selective neurons, whose actuation role is captured through the space localisation of input pattern data.
-                 In this sense, only those neurons fired by a particular data point turn out to be relevant, while they retain 
-                 the capacity to approximate closely to more general, irregular, non-linear features in localized regions. 
-                 Together, the MFF networks and the MBP algorithm embody a new neural architecture, ensuring, 
-                 in most cases, a better design choice than the one provided by the Multi-Layer Perceptron (MLP) 
-                 networks trained with the Back-Propagation (BP) algorithm. The utilization of computable importance factors for the
-                 actuation neurons whose relative magnitudes are derived from the space network properties and the training data is
-                 the key reason for its ability to decompose the underlying mapping function into simpler sub-functions requiring 
-                 parsimonious NN. Experimental results on benchmarks confirm improved efficiency of the gradient-based learning 
-                 algorithm proposed, borne out by better generalization and in most cases by shorter training times for online 
-                 learning, as compared with the MLP networks trained with the BP algorithm.
-
-                The Multiple Back-Propagation algorithm is a generalization of the Back-Propagation algorithm. 
-                Compared to the Back-Propagation algorithm Multiple Back-Propagation offers better generalization capabilities and 
-                faster training times.
+        <el-tabs type="border-card" >
+            <el-tab-pane label="Introduction" >
+                <div>This project was integrated with GPUMLib using Element which is a dekstop UI Library that based on javascript which is 
+                use to analyze big data using Multi-Back Propagation (MBP) Algorithm. For more information about the component of this project, please refer link below:  </div>
+                <el-col>
+                        <ul class="li-bg">
+                            <li type="circle"><div><a href="">Vue.js</a> is a progressive framework for building user interfaces. </div></li>
+                            <li type="circle"><div><a href="http://element.eleme.io/#/en-US">Element</a> is a Vue 2.0 based component library for developers, designers and product managers.</div></li>
+                            <li type="circle"><div><a href="http://gpumlib.sourceforge.net/">GPUMLib Machine Library</a> is an open source Graphic Processing Unit Machine Learning Library. This library aims to provide machine learning researchers and practitioners with a high performance library by taking 
+                            advantage of the GPU enormous computational power. The library is developed in C++ and CUDA.</div></li>
+                            <li type="circle"><div><a href="https://electron.atom.io/">Electron</a> is a framework for creating native applications with web technologies like JavaScript, HTML, and CSS
+                            where it is cross platform that compatible with Mac, Windows, and Linux, </div></li>
+                        </ul>
+                </el-col>
             </el-tab-pane>
-            <el-tab-pane label="Config">Config</el-tab-pane>
-            <el-tab-pane label="Reference">Config</el-tab-pane>
+            <el-tab-pane label="MBP History">
+                <div>The Multiple Back-Propagation algorithm is a generalization of the Back-Propagation algorithm. 
+                Compared to the Back-Propagation algorithm Multiple Back-Propagation offers better generalization capabilities and 
+                faster training times.</div>
+                <div> <a href="https://en.wikipedia.org/wiki/Backpropagation">For more information</a> </div>
+            </el-tab-pane>
+            
+            <el-tab-pane label="Reference">
+            The above is some related paper for this project:
+            
+                <el-row :gutter="20">
+                    <el-col>
+                        <ul id="example-1" class="li-bg">
+                            <li type="circle">Noel Lopes and Bernardete Ribeiro. An evaluation of multiple feed-forward networks on GPUs. International Journal of Neural Systems (IJNS), 21(1):31-47, 2011.</li>
+                            <li type="circle">Noel Lopes and Bernardete Ribeiro. GPU implementation of the multiple back-propagation algorithm. In 10th International Conference on Intelligent Data Engineering and Automated Learning (IDEAL 2009), LNCS 5788, pages 449-456. Springer, 2009.</li>
+                            <li type="circle">Noel Lopes and Bernardete Ribeiro. Hybrid learning multi neural architecture. In INNS-IEEE International Joint Conference on Neural Networks (IJCNN 2001), volume 4, pages 2788-2793, 2001.</li>
+                            <li type="circle">Noel Lopes and Bernardete Ribeiro. An efficient gradient-based learning algorithm applied to neural networks with selective actuation neurons. Neural, Parallel and Scientific Computations, 11:253{272, 2003.</li>
+                            <li type="circle">Machine Learning Big Data Framework and Analytics for Big Data Problems, Shafaatunnur Hasan, Siti Mariyam Shamsuddin, Noel Lopes, Int. J. Advance Soft Compu. Appl, Vol. 6, No. 2, July 2014, Copyright © SCRG Publication, 2014</li>
+                            <li type="circle">Emilio Corchado HujunYin (Eds.), Intelligent Data Engineering and Automated Learning -IDEAL 2009, 10th International Conference, Burgos, Spain, September, pp. 23-26, 2009, Proceedings. ISSN 0302-9743</li>
+                            <li type="circle">Wei, Xun-Kai Li, Ying-Hong Li, Yu-Fei Zhang, Dong-Fang, 2008, “Enclosing machine learning: concepts and algorithms”, Neural Computing and Applications, ISSN- 1433-3058. DOI- 10.1007/s00521-007-0113-y pp 273-243.</li>
+                            <li type="circle">Jurgen Schmidhuber, The Swiss AI Lab IDSIA Istituto Dalle Molle di Studi sull’Intelligenza Artificiale, University of Lugano & SUPSI, Galleria 2, 6928 Manno-Lugano Switzerland, 8 October 2014 “Deep Learning in Neural Networks: An Overview”. IDSIA-03-14 / arXiv:1404.7828v1 [cs.NE].pp 2553-2561.</li>
+                        </ul>
+                    </el-col>
+            
+                </el-row>
+            </el-tab-pane>
         </el-tabs>
     
     </div>
@@ -55,7 +75,7 @@ export default {
                 }
                 self.result += data;
                 if (data.indexOf("Device does not support cuda") !== -1) {
-                    alert("Hello");
+                    alert("Hello! Welcome to MBP, continue? ");
                 }
             }
         );
@@ -92,8 +112,9 @@ export default {
     min-height: 36px;
 }
 
-.row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
+.li-bg {
+    font-size: 15px;
+    font-style: italic;
+    
 }
 </style>

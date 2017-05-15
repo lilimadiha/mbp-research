@@ -5,7 +5,7 @@
                 <el-col :xs="12" :sm="12" :md="8" :lg="12" class="row-gutter text">-->
             <el-collapse-item title="Device" name="1">
                 <el-form ref="form" :model="form" label-width="120px">
-                    <el-form-item label="Device">
+                    <el-form-item label="Device :">
                         <el-select v-model="form.device" placeholder="Select Your Device">
                             <el-option label="CPU" value="CPU"></el-option>
                             <el-option label="GPU" value="GPU"></el-option>
@@ -15,36 +15,47 @@
             </el-collapse-item>
             <el-collapse-item title="Network Configuration" name="2">
                 <el-form ref="form" :model="form" label-width="120px">
-                    <el-form-item label="Algorithm">
+                    <el-form-item label="Algorithm : ">
                         <el-select v-model="form.algorithm" placeholder="Select Algorithm">
                             <el-option label="Back-Propagation (BP)" value="BP"></el-option>
                             <el-option label="Multi-Back Propagation (MBP)" value="MBP"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="Topology">
-                        <el-input v-model="form.topology" placeholder="e.g:10-30-10-1"> </el-input>
+                    <el-form-item label="Topology :">
+                        <el-popover ref="popover2" placement="top-start"  width="200"  trigger="hover" 
+                        content="Network topology layers (e.g. 10-30-10-1 represents a network with 10 inputs, 30 hidden neurons in the first hidden layer, 10 neurons in the second hidden layer and 1 output). 
+                        Note that at least one input and one output layer must be specified."></el-popover>
+                            <el-input v-model="form.topology" placeholder="e.g:10-30-10-1" v-popover:popover2> </el-input>
                     </el-form-item>
-                    <el-form-item label="Fixed Topology">
-                        <el-checkbox :label="fixedTopology" name="type" v-model="form.fixedTopology"></el-checkbox>
+                    <el-form-item label="Fixed Topology :">
+                        <el-popover ref="popover3" placement="top-start"  width="200"  trigger="hover" 
+                        content="If true the ATS will not search for better network topologies"> </el-popover>
+                            <el-checkbox :label="fixedTopology" name="type" v-model="form.fixedTopology" v-popover:popover3></el-checkbox>
                     </el-form-item>
                 </el-form>
             </el-collapse-item>
             <el-collapse-item title="Dataset" name="3">
                 <el-form ref="form" :model="form" label-width="120px">
-                    <el-form-item label="Header Line">
-                        <el-checkbox :label="headerLine" name="type" v-model="form.header"></el-checkbox>
+                    <el-form-item label="Header Line :">
+                    <el-popover ref="popover4" placement="top-start"  width="200"  trigger="hover" 
+                        content="If true the first line of the datasets (containing the caption) will be ignored"> </el-popover>
+                        <el-checkbox :label="headerLine" name="type" v-model="form.header" v-popover:popover4></el-checkbox>
                     </el-form-item>
-                    <el-form-item label="Rescale input data">
-                        <el-checkbox :label="rescaleInput" name="type" v-model="form.rescale"></el-checkbox>
+                    <el-form-item label="Rescale input data :">
+                    <el-popover ref="popover5" placement="top-start"  width="200"  trigger="hover" 
+                        content="If true the input data will be rescaled between -1 and 1"> </el-popover>
+                        <el-checkbox :label="rescaleInput" name="type" v-model="form.rescale" v-popover:popover5></el-checkbox>
                     </el-form-item>
                 </el-form>
                 <el-collapse v-model="activeNames">
                     <el-collapse-item title="Training" name="3-1">
                         <el-form ref="form" :model="form" label-width="120px">
-                            <el-form-item label="Samples">
-                                <el-input v-model="form.numTrainSample" placeholder="0"> </el-input>
+                            <el-form-item label="Samples :">
+                                <el-popover ref="popover6" placement="top-start"  width="200"  trigger="hover" 
+                                content="Number of training samples to be processed. A value of 0 (zero) means all."> </el-popover>
+                                    <el-input v-model="form.numTrainSample" placeholder="0" v-popover:popover6> </el-input>
                             </el-form-item>
-                            <el-form-item label="Filename">
+                            <el-form-item label="Filename :">
                                 <input type="file" @change="handleTrainingFile">
                             </el-form-item>
                         </el-form>
@@ -53,10 +64,12 @@
                 <el-collapse v-model="activeNames">
                     <el-collapse-item title="Validation" name="3-2">
                         <el-form ref="form" :model="form" label-width="120px">
-                            <el-form-item label="Samples">
-                                <el-input v-model="form.numTestSample" placeholder="0"> </el-input>
+                            <el-form-item label="Samples :">
+                            <el-popover ref="popover6" placement="top-start"  width="200"  trigger="hover" 
+                            content="Number of training samples to be processed. A value of 0 (zero) means all."> </el-popover>
+                                <el-input v-model="form.numTestSample" placeholder="0" v-popover:popover6> </el-input>
                             </el-form-item>
-                            <el-form-item label="Filename">
+                            <el-form-item label="Filename: ">
                                 <input type="file" @change="handleTestingFile">
                             </el-form-item>
                         </el-form>
@@ -65,24 +78,34 @@
             </el-collapse-item>
             <el-collapse-item title="Training Configuration" name="4">
                 <el-form ref="form" :model="form" label-width="120px">
-                    <el-form-item label="Networks">
-                        <el-input v-model="form.numOfNetwork" placeholder="Number of networks to train"></el-input>
+                    <el-form-item label="Networks: ">
+                        <el-popover ref="popover7" placement="top-start"  width="200"  trigger="hover" 
+                        content="Number of networks to train"> </el-popover>
+                            <el-input v-model="form.numOfNetwork" placeholder="Number of networks to train" v-popover:popover7> </el-input>
                     </el-form-item>
-                    <el-form-item label="Robust Learning">
-                        <el-checkbox :label="robustLearning" name="type" v-model="form.robust"></el-checkbox>
+                    <el-form-item label="Robust Learning :">
+                        <el-popover ref="popover8" placement="top-start"  width="200"  trigger="hover" 
+                        content="The robust learning technique complements the adaptive step size technique, which is used in this implementation, to enhance the stability and training speed."> </el-popover>
+                            <el-checkbox :label="robustLearning" name="type" v-model="form.robust" v-popover:popover8></el-checkbox>
                     </el-form-item>
                 </el-form>
                 <el-collapse v-model="activeNames">
                     <el-collapse-item title="Stop Criteria" name="4-1">
                         <el-form ref="form" :model="form" label-width="120px">
-                            <el-form-item label="Epochs">
-                                <el-input v-model="form.epochs" placeholder="0"> </el-input>
+                            <el-form-item label="Epochs :">
+                                <el-popover ref="popover9" placement="top-start"  width="200"  trigger="hover" 
+                                content="Maximum number of epochs that each network will be trained"> </el-popover>
+                                    <el-input v-model="form.epochs" placeholder="0" v-popover:popover9> </el-input>
                             </el-form-item>
-                            <el-form-item label="Stop RMS">
-                                <el-input v-model="form.stopRMS" placeholder="0.010"> </el-input>
+                            <el-form-item label="Stop RMS :">
+                                <el-popover ref="popover10" placement="top-start"  width="200"  trigger="hover" 
+                                content="Stop training when the RMS (Root Mean Square) error of the network is less than or equal to ..."> </el-popover>
+                                    <el-input v-model="form.stopRMS" placeholder="0.010" v-popover:popover10> </el-input>
                             </el-form-item>
-                            <el-form-item label="Initial Random Seed">
-                                <el-input v-model="form.initialRandomSeed" placeholder="0"> </el-input>
+                            <el-form-item label="Initial Random Seed :">
+                                <el-popover ref="popover11" placement="top-start"  width="200"  trigger="hover" 
+                                content="The initial random seed. If 0 (zero) a new random seed will be obtained."> </el-popover>
+                                    <el-input v-model="form.initialRandomSeed" placeholder="0" v-popover:popover11> </el-input>
                             </el-form-item>
                         </el-form>
                     </el-collapse-item>
@@ -92,7 +115,7 @@
         </el-collapse>
         <div class="block">
             <span class="wrapper">
-                <el-button @click="trainRun" type="success">Train and Test</el-button>
+                <el-button @click="trainRun" type="success" style="background-color: #006064;">Train and Test</el-button>
                 <el-button>Cancel</el-button>
             </span>
         </div>
@@ -110,8 +133,12 @@
                     <el-button type="primary" @click="testingFileFailed = false">Ok</el-button>
                 </span>
         </el-dialog>
+
+       
         
     </div>
+
+    
 </template>
 
 <script>
@@ -188,7 +215,9 @@
                 let config = " ";
 
                 if (!this.trainingSrcFile) {
-                    return console.log("Training Src not initiliazed!");
+                    alert("Training Src file not initiliazed!");
+                    return console.log("Training Src file not initiliazed!");
+                    
                 }
 
                 config += '"' + this.trainingSrcFile + '" ';
@@ -198,12 +227,14 @@
                 }
 
                 if (!this.form.topology) {
+                    alert("Topology not initiliazed!")
                     return console.log("Topology not initiliazed!");
                 }
 
                 config += "-t " + this.form.topology + " ";
 
                 if (!this.form.numTrainSample) {
+                    alert("Number of Training Sample not initiliazed!");
                     return console.log("Number of Training Sample not initiliazed!");
                 }
 
@@ -213,7 +244,8 @@
                     if (this.form.numTestSample) {
                         config += this.form.numTestSample + " ";
                     } else {
-                        return console.log("You initiliazed testing src file bu Number of Testing Sample not initiliazed!");
+                        alert("You initiliazed testing src file but Number of Testing Sample not initiliazed!");
+                        return console.log("You initiliazed testing src file but Number of Testing Sample not initiliazed!");
                     }
                 }
 
@@ -227,10 +259,16 @@
 
                 if (parseFloat(this.form.stopRMS) !== 0.01) {
                     config += "-s "+ this.form.stopRMS + " ";
-                }
+                    if (parseFloat(this.form.stopRMS) === 0.01) {
+                        alert("Error RMS has reached!");
+                        return console.log("Error RMS has reached!");
+                    }
+                } 
+                
 
                 if (this.form.epochs) {
                     config += "-e "+ this.form.epochs + " ";
+                    
                 }
 
                 if (this.form.initialRandomSeed) {
@@ -319,5 +357,9 @@
         white-space: -pre-wrap;      /* Opera 4-6 */
         white-space: -o-pre-wrap;    /* Opera 7 */
         word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    }
+
+    .el-button--primary .trainButton {
+        background-color: black;
     }
 </style>

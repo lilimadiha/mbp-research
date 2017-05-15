@@ -1,9 +1,9 @@
 <template>
     <div>
     
-        <el-tabs v-model="activeName" type="card">
-            <el-tab-pane label="Home" name="first">
-                <span slot="label"><i class="el-icon-menu"></i> Home </span>
+        <el-tabs v-model="activeName" type="card"  > 
+            <el-tab-pane label="Home" name="first" >
+                <span slot="label" ><i class="el-icon-menu"></i> Home </span>
                 <l-home></l-home>
             </el-tab-pane>
             <el-tab-pane label="Convert Data" name="second">
@@ -42,18 +42,6 @@
 </script>
 
 <style>
-    .el-tabs {}
-    
-    .el-tabs .el-tabs__item.is-active {
-        color: black;
-        
-    }
-    
-    .el-tabs__active-bar {
-        background-color: black;
-        
-    }
-
     .el-col {
     border-radius: 4px;
   }

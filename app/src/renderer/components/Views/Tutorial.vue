@@ -1,32 +1,58 @@
 <template>
     <div>
-        <el-collapse v-model="convertData" accordion>
-            <el-collapse-item title="Step 1: Upload Data" name="1">
-                <div>Consistent with real life: in line with the process and logic of real life, and comply with languages and habits that the users are used to;</div>
+        <el-collapse  accordion >
+            <el-collapse-item title="Upload Data" name="1" class="tab1">
+                <div>Select an image from your device ( Max: 100 MB & 100 MP, GIF format: 30 MB & 10 MP ) :</div>
                 <el-form ref="form" :model="form" label-width="120px">
                     <el-form-item label="Filename">
-                        <input type="file" @change="handleDataFile">
+                        <el-popover ref="popover1" placement="top-start"  width="200"  trigger="hover" content="this file only accepted file format .csv and .bat only">
+                        </el-popover>
+                            <input type="file" @change="handleDataFile" v-popover:popover1>
                     </el-form-item>
                 </el-form>
+                <div>You can upload an image in JPEG, PNG, GIF or BMP format.</div>      
             </el-collapse-item>
-            <el-collapse-item title="Step 2: Resizing Data" name="2">
-                <div>Operation feedback: enable the users to clearly perceive their operations by style updates and interactive effects;</div>
-                <div>Visual feedback: reflect current state by updating or rearranging elements of the page.</div>
+            <el-collapse-item title="Resizing Data" name="2">
+            
+                <div>Resize the image by to be exactly the size you specified, for example: 1366x768 pixels.</div>
+                    <el-form>
+                        <el-form-item label="Height">
+                            <el-col :span="5">
+                                <el-input placeholder="Enter Height"></el-input> 
+                            </el-col>
+                             pixels
+                        </el-form-item>
+                        <el-form-item label="Weight">
+                            <el-col :span="5">
+                                <el-input placeholder="Enter weight"></el-input>
+                            </el-col>
+                            pixels
+                        </el-form-item>
+                    </el-form>
             </el-collapse-item>
-            <el-collapse-item title="Step 3: Convert Data Format" name="3">
-                <div>Simplify the process: keep operating process simple and intuitive;</div>
-                <div>Definite and clear: enunciate your intentions clearly so that the users can quickly understand and make decisions;</div>
-                <div>Easy to identify: the interface should be straightforward, which helps the users to identify and frees them from memorizing and recalling.</div>
+            <el-collapse-item title="Convert Data Format" name="3">
+                <div></div>
+                <el-form>
+                    <el-form-item label="Please select the output image format">
+                    <el-select placeholder="Select format">
+                        <el-option label="JPEG" value="jpeg"></el-option>
+                        <el-option label="PNG" value="png"></el-option>
+                        <el-option label="GIF" value="gif"></el-option>
+                        <el-option label="BMP" value="bmp"></el-option>
+                        <el-option label="PGM" value="pgm"></el-option>
+                    </el-select>
+                    </el-form-item>
+                </el-form>
             </el-collapse-item>
         </el-collapse>
     
         <div class="block">
             <span class="wrapper">
-                    <el-button @click="onSubmit" type="success"> Resize and Convert </el-button>
+                    <el-button @click="onSubmit" type="success" style="background-color: #006064;"> Resize and Convert </el-button>
                     <el-button>Cancel</el-button>
                 </span>
         </div>
-    
+
     </div>
 </template>
 
@@ -35,8 +61,31 @@
 export default {
     data() {
         return {
-                convertData: '1'
+                //convertData: '1',
+                form: [{
+
+
+                }],
+                options: [{
+                            value: 'jpeg',
+                            label: 'JPEG'
+                        }, {
+                            value: 'png',
+                            label: 'PNG'
+                        },{
+                            value: 'gif',
+                            label: 'GIF'
+                        },{
+                            value: 'bmp',
+                            label: 'BMP'
+                        },{
+                            value: 'pgm',
+                            label: 'PGM'
+                        }],
+
         }
+         
+    
     },
     methods: {
         onSubmit() {
@@ -49,3 +98,23 @@ export default {
     }
 }
 </script>
+
+<style>
+.el-collapse .el-collapse-item__header {
+    background-color: #0097A7;
+    color: white;
+}
+
+.el-collapse .el-collapse-item__content {
+   background-color: #B2EBF2;
+   
+}
+
+.block {
+    padding-top: 5%;
+    padding-left: 75%;
+}
+
+
+
+</style>
