@@ -91,6 +91,12 @@ export default {
     }
 }
 
+.el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active {
+    background-color: white;
+    -webkit-text-fill-color: #0097A7;
+}
+   
+
 .el-col {
     border-radius: 4px;
 }

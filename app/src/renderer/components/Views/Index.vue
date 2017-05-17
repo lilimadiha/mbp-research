@@ -1,8 +1,8 @@
 <template>
     <div>
     
-        <el-tabs v-model="activeName" type="card"  > 
-            <el-tab-pane label="Home" name="first" >
+        <el-tabs v-model="activeName" type="card"> 
+            <el-tab-pane label="Home" name="first"  >
                 <span slot="label" ><i class="el-icon-menu"></i> Home </span>
                 <l-home></l-home>
             </el-tab-pane>
@@ -42,7 +42,23 @@
 </script>
 
 <style>
-    .el-col {
+.el-tabs__nav-wrap {
+    background-color: #0097A7;
+    -webkit-text-fill-color: white;
+    
+}
+
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    background-color: white;
+    -webkit-text-fill-color: #0097A7;
+}
+    
+
+   
+
+    
+
+.el-col {
     border-radius: 4px;
   }
   .bg-purple-dark {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-collapse  accordion >
-            <el-collapse-item title="Upload Data" name="1" class="tab1">
+            <el-collapse-item title="Upload Data" name="1" >
                 <div>Select an image from your device ( Max: 100 MB & 100 MP, GIF format: 30 MB & 10 MP ) :</div>
                 <el-form ref="form" :model="form" label-width="120px">
                     <el-form-item label="Filename">
@@ -16,15 +16,15 @@
             
                 <div>Resize the image by to be exactly the size you specified, for example: 1366x768 pixels.</div>
                     <el-form>
-                        <el-form-item label="Height">
+                        <el-form-item label="Height: ">
                             <el-col :span="5">
                                 <el-input placeholder="Enter Height"></el-input> 
                             </el-col>
                              pixels
                         </el-form-item>
-                        <el-form-item label="Weight">
+                        <el-form-item label="Width: ">
                             <el-col :span="5">
-                                <el-input placeholder="Enter weight"></el-input>
+                                <el-input placeholder="Enter width"></el-input>
                             </el-col>
                             pixels
                         </el-form-item>

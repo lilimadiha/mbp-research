@@ -5,7 +5,7 @@
                 <el-col :xs="12" :sm="12" :md="8" :lg="12" class="row-gutter text">-->
             <el-collapse-item title="Device" name="1">
                 <el-form ref="form" :model="form" label-width="120px">
-                    <el-form-item label="Device :">
+                    <el-form-item label="* Device :">
                         <el-select v-model="form.device" placeholder="Select Your Device">
                             <el-option label="CPU" value="CPU"></el-option>
                             <el-option label="GPU" value="GPU"></el-option>
@@ -15,19 +15,19 @@
             </el-collapse-item>
             <el-collapse-item title="Network Configuration" name="2">
                 <el-form ref="form" :model="form" label-width="120px">
-                    <el-form-item label="Algorithm : ">
+                    <el-form-item label="* Algorithm : ">
                         <el-select v-model="form.algorithm" placeholder="Select Algorithm">
                             <el-option label="Back-Propagation (BP)" value="BP"></el-option>
                             <el-option label="Multi-Back Propagation (MBP)" value="MBP"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="Topology :">
+                    <el-form-item label="* Topology :">
                         <el-popover ref="popover2" placement="top-start"  width="200"  trigger="hover" 
                         content="Network topology layers (e.g. 10-30-10-1 represents a network with 10 inputs, 30 hidden neurons in the first hidden layer, 10 neurons in the second hidden layer and 1 output). 
                         Note that at least one input and one output layer must be specified."></el-popover>
                             <el-input v-model="form.topology" placeholder="e.g:10-30-10-1" v-popover:popover2> </el-input>
                     </el-form-item>
-                    <el-form-item label="Fixed Topology :">
+                    <el-form-item  label="Fixed Topology :">
                         <el-popover ref="popover3" placement="top-start"  width="200"  trigger="hover" 
                         content="If true the ATS will not search for better network topologies"> </el-popover>
                             <el-checkbox :label="fixedTopology" name="type" v-model="form.fixedTopology" v-popover:popover3></el-checkbox>
@@ -35,7 +35,7 @@
                 </el-form>
             </el-collapse-item>
             <el-collapse-item title="Dataset" name="3">
-                <el-form ref="form" :model="form" label-width="120px">
+                <el-form ref="form" :model="form" label-width="150px">
                     <el-form-item label="Header Line :">
                     <el-popover ref="popover4" placement="top-start"  width="200"  trigger="hover" 
                         content="If true the first line of the datasets (containing the caption) will be ignored"> </el-popover>
@@ -55,7 +55,7 @@
                                 content="Number of training samples to be processed. A value of 0 (zero) means all."> </el-popover>
                                     <el-input v-model="form.numTrainSample" placeholder="0" v-popover:popover6> </el-input>
                             </el-form-item>
-                            <el-form-item label="Filename :">
+                            <el-form-item label="* Filename :">
                                 <input type="file" @change="handleTrainingFile">
                             </el-form-item>
                         </el-form>
@@ -69,7 +69,7 @@
                             content="Number of training samples to be processed. A value of 0 (zero) means all."> </el-popover>
                                 <el-input v-model="form.numTestSample" placeholder="0" v-popover:popover6> </el-input>
                             </el-form-item>
-                            <el-form-item label="Filename: ">
+                            <el-form-item label="* Filename: ">
                                 <input type="file" @change="handleTestingFile">
                             </el-form-item>
                         </el-form>
@@ -92,7 +92,7 @@
                 <el-collapse v-model="activeNames">
                     <el-collapse-item title="Stop Criteria" name="4-1">
                         <el-form ref="form" :model="form" label-width="120px">
-                            <el-form-item label="Epochs :">
+                            <el-form-item label="* Epochs :">
                                 <el-popover ref="popover9" placement="top-start"  width="200"  trigger="hover" 
                                 content="Maximum number of epochs that each network will be trained"> </el-popover>
                                     <el-input v-model="form.epochs" placeholder="0" v-popover:popover9> </el-input>
